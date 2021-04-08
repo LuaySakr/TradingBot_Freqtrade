@@ -1,0 +1,8 @@
+config.json
+tradesv3.sqbpro
+tradesv3.sqlite
+data/binance/*
+backtest_results/*
+hyperopt_results/*
+logs/*
+plot/*
