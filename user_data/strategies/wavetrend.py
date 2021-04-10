@@ -36,6 +36,7 @@ class WaveTrend(IStrategy):
     # Minimal ROI designed for the strategy.
         # ROI table:
 
+
     # ROI table:
     minimal_roi = {
         "0": 1
@@ -173,7 +174,7 @@ class WaveTrend(IStrategy):
         #dataframe['volume_rolling'] = dataframe['volume'].shift(14).rolling(14).mean()
         #
         osLevel = -60
-        obLevel = 60
+        obLevel = 30
         dataframe['ap'] = (dataframe['high'] + dataframe['low'] + dataframe['close']) / 3
         dataframe['esa'] = ta.EMA(dataframe['ap'], self.n1)
         dataframe['d'] = ta.EMA((dataframe['ap']-dataframe['esa']).abs(), self.n1)
