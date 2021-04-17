@@ -51,97 +51,99 @@ class MoniGoManiHyperStrategy(IStrategy):
     ####################################################################################################################
 
   
+ 
+
     # Buy hyperspace params:
     buy_params = {
-        'buy__downwards_trend_total_signal_needed': 64,
-        'buy__sideways_trend_total_signal_needed': 99,
-        'buy__upwards_trend_total_signal_needed': 9,
-        'buy_downwards_trend_adx_strong_up_weight': 65,
-        'buy_downwards_trend_bollinger_bands_weight': 53,
-        'buy_downwards_trend_ema_long_golden_cross_weight': 64,
-        'buy_downwards_trend_ema_short_golden_cross_weight': 15,
-        'buy_downwards_trend_macd_weight': 32,
-        'buy_downwards_trend_rsi_weight': 88,
-        'buy_downwards_trend_sma_long_golden_cross_weight': 90,
-        'buy_downwards_trend_sma_short_golden_cross_weight': 19,
-        'buy_downwards_trend_vwap_cross_weight': 73,
-        'buy_rsi_divergence_weight': 43,
-        'buy_sideways_trend_adx_strong_up_weight': 37,
-        'buy_sideways_trend_bollinger_bands_weight': 10,
-        'buy_sideways_trend_ema_long_golden_cross_weight': 85,
-        'buy_sideways_trend_ema_short_golden_cross_weight': 88,
-        'buy_sideways_trend_macd_weight': 23,
+        'buy__downwards_trend_total_signal_needed': 92,
+        'buy__sideways_trend_total_signal_needed': 92,
+        'buy__upwards_trend_total_signal_needed': 19,
+        'buy_downwards_trend_adx_strong_up_weight': 62,
+        'buy_downwards_trend_bollinger_bands_weight': 78,
+        'buy_downwards_trend_ema_long_golden_cross_weight': 3,
+        'buy_downwards_trend_ema_short_golden_cross_weight': 31,
+        'buy_downwards_trend_macd_weight': 63,
+        'buy_downwards_trend_rsi_weight': 7,
+        'buy_downwards_trend_sma_long_golden_cross_weight': 60,
+        'buy_downwards_trend_sma_short_golden_cross_weight': 90,
+        'buy_downwards_trend_vwap_cross_weight': 32,
+        'buy_rsi_divergence_weight': 14,
+        'buy_sideways_trend_adx_strong_up_weight': 88,
+        'buy_sideways_trend_bollinger_bands_weight': 52,
+        'buy_sideways_trend_ema_long_golden_cross_weight': 10,
+        'buy_sideways_trend_ema_short_golden_cross_weight': 72,
+        'buy_sideways_trend_macd_weight': 81,
         'buy_sideways_trend_rsi_weight': 31,
-        'buy_sideways_trend_sma_long_golden_cross_weight': 20,
-        'buy_sideways_trend_sma_short_golden_cross_weight': 10,
-        'buy_sideways_trend_vwap_cross_weight': 6,
-        'buy_upwards_trend_adx_strong_up_weight': 27,
-        'buy_upwards_trend_bollinger_bands_weight': 5,
-        'buy_upwards_trend_ema_long_golden_cross_weight': 61,
-        'buy_upwards_trend_ema_short_golden_cross_weight': 89,
-        'buy_upwards_trend_macd_weight': 9,
-        'buy_upwards_trend_rsi_weight': 39,
-        'buy_upwards_trend_sma_long_golden_cross_weight': 88,
-        'buy_upwards_trend_sma_short_golden_cross_weight': 20,
-        'buy_upwards_trend_vwap_cross_weight': 48,
-        'buy_wavetrend_weight': 83
+        'buy_sideways_trend_sma_long_golden_cross_weight': 58,
+        'buy_sideways_trend_sma_short_golden_cross_weight': 80,
+        'buy_sideways_trend_vwap_cross_weight': 95,
+        'buy_upwards_trend_adx_strong_up_weight': 99,
+        'buy_upwards_trend_bollinger_bands_weight': 3,
+        'buy_upwards_trend_ema_long_golden_cross_weight': 51,
+        'buy_upwards_trend_ema_short_golden_cross_weight': 78,
+        'buy_upwards_trend_macd_weight': 85,
+        'buy_upwards_trend_rsi_weight': 92,
+        'buy_upwards_trend_sma_long_golden_cross_weight': 41,
+        'buy_upwards_trend_sma_short_golden_cross_weight': 0,
+        'buy_upwards_trend_vwap_cross_weight': 86,
+        'buy_wavetrend_weight': 34
     }
 
     # Sell hyperspace params:
     sell_params = {
-        'sell___trades_when_downwards': False,
-        'sell___trades_when_sideways': True,
-        'sell___trades_when_upwards': False,
-        'sell__downwards_trend_total_signal_needed': 97,
-        'sell__sideways_trend_total_signal_needed': 72,
-        'sell__upwards_trend_total_signal_needed': 18,
-        'sell_downwards_trend_adx_strong_down_weight': 28,
-        'sell_downwards_trend_bollinger_bands_weight': 93,
-        'sell_downwards_trend_ema_long_death_cross_weight': 83,
-        'sell_downwards_trend_ema_short_death_cross_weight': 41,
-        'sell_downwards_trend_macd_weight': 20,
-        'sell_downwards_trend_rsi_weight': 53,
-        'sell_downwards_trend_sma_long_death_cross_weight': 38,
-        'sell_downwards_trend_sma_short_death_cross_weight': 20,
-        'sell_downwards_trend_vwap_cross_weight': 93,
-        'sell_rsi_divergence_weight': 62,
-        'sell_sideways_trend_adx_strong_down_weight': 43,
-        'sell_sideways_trend_bollinger_bands_weight': 71,
-        'sell_sideways_trend_ema_long_death_cross_weight': 56,
-        'sell_sideways_trend_ema_short_death_cross_weight': 59,
-        'sell_sideways_trend_macd_weight': 79,
-        'sell_sideways_trend_rsi_weight': 96,
-        'sell_sideways_trend_sma_long_death_cross_weight': 68,
-        'sell_sideways_trend_sma_short_death_cross_weight': 44,
-        'sell_sideways_trend_vwap_cross_weight': 18,
-        'sell_upwards_trend_adx_strong_down_weight': 3,
-        'sell_upwards_trend_bollinger_bands_weight': 15,
-        'sell_upwards_trend_ema_long_death_cross_weight': 4,
-        'sell_upwards_trend_ema_short_death_cross_weight': 16,
-        'sell_upwards_trend_macd_weight': 5,
-        'sell_upwards_trend_rsi_weight': 26,
-        'sell_upwards_trend_sma_long_death_cross_weight': 66,
-        'sell_upwards_trend_sma_short_death_cross_weight': 3,
-        'sell_upwards_trend_vwap_cross_weight': 90,
-        'sell_wavetrend_weight': 39
+        'sell___trades_when_downwards': True,
+        'sell___trades_when_sideways': False,
+        'sell___trades_when_upwards': True,
+        'sell__downwards_trend_total_signal_needed': 30,
+        'sell__sideways_trend_total_signal_needed': 16,
+        'sell__upwards_trend_total_signal_needed': 64,
+        'sell_downwards_trend_adx_strong_down_weight': 73,
+        'sell_downwards_trend_bollinger_bands_weight': 53,
+        'sell_downwards_trend_ema_long_death_cross_weight': 23,
+        'sell_downwards_trend_ema_short_death_cross_weight': 25,
+        'sell_downwards_trend_macd_weight': 45,
+        'sell_downwards_trend_rsi_weight': 45,
+        'sell_downwards_trend_sma_long_death_cross_weight': 63,
+        'sell_downwards_trend_sma_short_death_cross_weight': 11,
+        'sell_downwards_trend_vwap_cross_weight': 17,
+        'sell_rsi_divergence_weight': 69,
+        'sell_sideways_trend_adx_strong_down_weight': 37,
+        'sell_sideways_trend_bollinger_bands_weight': 66,
+        'sell_sideways_trend_ema_long_death_cross_weight': 86,
+        'sell_sideways_trend_ema_short_death_cross_weight': 56,
+        'sell_sideways_trend_macd_weight': 28,
+        'sell_sideways_trend_rsi_weight': 38,
+        'sell_sideways_trend_sma_long_death_cross_weight': 84,
+        'sell_sideways_trend_sma_short_death_cross_weight': 2,
+        'sell_sideways_trend_vwap_cross_weight': 37,
+        'sell_upwards_trend_adx_strong_down_weight': 12,
+        'sell_upwards_trend_bollinger_bands_weight': 49,
+        'sell_upwards_trend_ema_long_death_cross_weight': 61,
+        'sell_upwards_trend_ema_short_death_cross_weight': 95,
+        'sell_upwards_trend_macd_weight': 67,
+        'sell_upwards_trend_rsi_weight': 82,
+        'sell_upwards_trend_sma_long_death_cross_weight': 82,
+        'sell_upwards_trend_sma_short_death_cross_weight': 99,
+        'sell_upwards_trend_vwap_cross_weight': 10,
+        'sell_wavetrend_weight': 31
     }
 
     # ROI table:
     minimal_roi = {
-        "0": 0.17694,
-        "380": 0.11601,
-        "1068": 0.07512,
-        "1347": 0
+        "0": 0.18852,
+        "355": 0.13991,
+        "1052": 0.06192,
+        "2337": 0
     }
 
     # Stoploss:
-    stoploss = -0.04804
+    stoploss = -0.02717
 
     # Trailing stop:
     trailing_stop = True
-    trailing_stop_positive = 0.01051
-    trailing_stop_positive_offset = 0.01211
-    trailing_only_offset_is_reached = False
+    trailing_stop_positive = 0.01076
+    trailing_stop_positive_offset = 0.0193
+    trailing_only_offset_is_reached = True
 
 
     ####################################################################################################################

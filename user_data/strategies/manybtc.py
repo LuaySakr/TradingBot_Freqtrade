@@ -4,14 +4,17 @@ import pandas as pd  # noqa
 import talib.abstract as ta
 from pandas import DataFrame
 import freqtrade.vendor.qtpylib.indicators as qtpylib
-from freqtrade.strategy import IStrategy, CategoricalParameter, IntParameter
+from freqtrade.strategy.interface import IStrategy
+from freqtrade.strategy.hyper import (CategoricalParameter, DecimalParameter, IntParameter,
+                                      RealParameter)
+
 # ^ TA-Lib Autofill mostly broken in JetBrains Products,
 # ta._ta_lib.<function_name> can temporarily be used while writing as a workaround
 # Then change back to ta.<function_name> so IDE won't nag about accessing a protected member of TA-Lib
 # ----------------------------------------------------------------------------------------------------
 
 
-class MoniGoManiHyperStrategyTest(IStrategy):
+class MoniGoManiBTCHyperStrategy(IStrategy):
     """
     ####################################################################################
     ####                                                                            ####
@@ -42,109 +45,105 @@ class MoniGoManiHyperStrategyTest(IStrategy):
     # Warning: Disable this for anything else then debugging in an IDE! (Integrated Development Environment)
     debuggable_weighted_signal_dataframe = False
 
-    sell_unclogger_enabled = False
-
     # Ps: Documentation has been moved to the Buy/Sell HyperOpt Space Parameters sections below this copy-paste section
     ####################################################################################################################
     #                                    START OF HYPEROPT RESULTS COPY-PASTE SECTION                                  #
     ####################################################################################################################
+
   
-    
-    
+   
     # Buy hyperspace params:
     buy_params = {
-        'buy__downwards_trend_total_signal_needed': 43,
-        'buy__sideways_trend_total_signal_needed': 82,
-        'buy__upwards_trend_total_signal_needed': 17,
-        'buy_downwards_trend_adx_strong_up_weight': 97,
-        'buy_downwards_trend_bollinger_bands_weight': 13,
-        'buy_downwards_trend_ema_long_golden_cross_weight': 50,
-        'buy_downwards_trend_ema_short_golden_cross_weight': 26,
-        'buy_downwards_trend_macd_weight': 52,
-        'buy_downwards_trend_rsi_weight': 67,
-        'buy_downwards_trend_sma_long_golden_cross_weight': 77,
-        'buy_downwards_trend_sma_short_golden_cross_weight': 38,
-        'buy_downwards_trend_vwap_cross_weight': 13,
-        'buy_rsi_divergence_weight': 90,
-        'buy_sideways_trend_adx_strong_up_weight': 63,
-        'buy_sideways_trend_bollinger_bands_weight': 71,
-        'buy_sideways_trend_ema_long_golden_cross_weight': 36,
-        'buy_sideways_trend_ema_short_golden_cross_weight': 47,
-        'buy_sideways_trend_macd_weight': 76,
-        'buy_sideways_trend_rsi_weight': 90,
-        'buy_sideways_trend_sma_long_golden_cross_weight': 7,
-        'buy_sideways_trend_sma_short_golden_cross_weight': 66,
-        'buy_sideways_trend_vwap_cross_weight': 43,
-        'buy_upwards_trend_adx_strong_up_weight': 17,
-        'buy_upwards_trend_bollinger_bands_weight': 21,
-        'buy_upwards_trend_ema_long_golden_cross_weight': 44,
-        'buy_upwards_trend_ema_short_golden_cross_weight': 80,
-        'buy_upwards_trend_macd_weight': 33,
-        'buy_upwards_trend_rsi_weight': 43,
-        'buy_upwards_trend_sma_long_golden_cross_weight': 69,
-        'buy_upwards_trend_sma_short_golden_cross_weight': 60,
-        'buy_upwards_trend_vwap_cross_weight': 1,
-        'buy_wavetrend_weight': 61
+        'buy__downwards_trend_total_signal_needed': 53,
+        'buy__sideways_trend_total_signal_needed': 6,
+        'buy__upwards_trend_total_signal_needed': 26,
+        'buy_downwards_trend_adx_strong_up_weight': 9,
+        'buy_downwards_trend_bollinger_bands_weight': 19,
+        'buy_downwards_trend_ema_long_golden_cross_weight': 16,
+        'buy_downwards_trend_ema_short_golden_cross_weight': 3,
+        'buy_downwards_trend_macd_weight': 22,
+        'buy_downwards_trend_rsi_weight': 18,
+        'buy_downwards_trend_sma_long_golden_cross_weight': 81,
+        'buy_downwards_trend_sma_short_golden_cross_weight': 36,
+        'buy_downwards_trend_vwap_cross_weight': 16,
+        'buy_rsi_divergence_weight': 29,
+        'buy_sideways_trend_adx_strong_up_weight': 7,
+        'buy_sideways_trend_bollinger_bands_weight': 20,
+        'buy_sideways_trend_ema_long_golden_cross_weight': 76,
+        'buy_sideways_trend_ema_short_golden_cross_weight': 89,
+        'buy_sideways_trend_macd_weight': 43,
+        'buy_sideways_trend_rsi_weight': 94,
+        'buy_sideways_trend_sma_long_golden_cross_weight': 66,
+        'buy_sideways_trend_sma_short_golden_cross_weight': 7,
+        'buy_sideways_trend_vwap_cross_weight': 34,
+        'buy_upwards_trend_adx_strong_up_weight': 58,
+        'buy_upwards_trend_bollinger_bands_weight': 97,
+        'buy_upwards_trend_ema_long_golden_cross_weight': 22,
+        'buy_upwards_trend_ema_short_golden_cross_weight': 43,
+        'buy_upwards_trend_macd_weight': 77,
+        'buy_upwards_trend_rsi_weight': 27,
+        'buy_upwards_trend_sma_long_golden_cross_weight': 98,
+        'buy_upwards_trend_sma_short_golden_cross_weight': 83,
+        'buy_upwards_trend_vwap_cross_weight': 88,
+        'buy_wavetrend_weight': 7
     }
 
     # Sell hyperspace params:
     sell_params = {
         'sell___trades_when_downwards': False,
-        'sell___trades_when_sideways': False,
+        'sell___trades_when_sideways': True,
         'sell___trades_when_upwards': False,
-        'sell__downwards_trend_total_signal_needed': 7,
-        'sell__sideways_trend_total_signal_needed': 40,
-        'sell__upwards_trend_total_signal_needed': 80,
-        'sell_downwards_trend_adx_strong_down_weight': 23,
-        'sell_downwards_trend_bollinger_bands_weight': 69,
-        'sell_downwards_trend_ema_long_death_cross_weight': 69,
-        'sell_downwards_trend_ema_short_death_cross_weight': 21,
-        'sell_downwards_trend_macd_weight': 7,
-        'sell_downwards_trend_rsi_weight': 72,
-        'sell_downwards_trend_sma_long_death_cross_weight': 69,
-        'sell_downwards_trend_sma_short_death_cross_weight': 43,
-        'sell_downwards_trend_vwap_cross_weight': 50,
-        'sell_rsi_divergence_weight': 7,
-        'sell_sideways_trend_adx_strong_down_weight': 42,
-        'sell_sideways_trend_bollinger_bands_weight': 54,
-        'sell_sideways_trend_ema_long_death_cross_weight': 30,
-        'sell_sideways_trend_ema_short_death_cross_weight': 11,
-        'sell_sideways_trend_macd_weight': 79,
-        'sell_sideways_trend_rsi_weight': 21,
-        'sell_sideways_trend_sma_long_death_cross_weight': 43,
-        'sell_sideways_trend_sma_short_death_cross_weight': 57,
-        'sell_sideways_trend_vwap_cross_weight': 86,
-        'sell_upwards_trend_adx_strong_down_weight': 86,
-        'sell_upwards_trend_bollinger_bands_weight': 87,
-        'sell_upwards_trend_ema_long_death_cross_weight': 31,
-        'sell_upwards_trend_ema_short_death_cross_weight': 64,
-        'sell_upwards_trend_macd_weight': 75,
-        'sell_upwards_trend_rsi_weight': 35,
-        'sell_upwards_trend_sma_long_death_cross_weight': 2,
-        'sell_upwards_trend_sma_short_death_cross_weight': 41,
-        'sell_upwards_trend_vwap_cross_weight': 78,
-        'sell_wavetrend_weight': 44
+        'sell__downwards_trend_total_signal_needed': 27,
+        'sell__sideways_trend_total_signal_needed': 49,
+        'sell__upwards_trend_total_signal_needed': 24,
+        'sell_downwards_trend_adx_strong_down_weight': 70,
+        'sell_downwards_trend_bollinger_bands_weight': 81,
+        'sell_downwards_trend_ema_long_death_cross_weight': 59,
+        'sell_downwards_trend_ema_short_death_cross_weight': 78,
+        'sell_downwards_trend_macd_weight': 6,
+        'sell_downwards_trend_rsi_weight': 18,
+        'sell_downwards_trend_sma_long_death_cross_weight': 90,
+        'sell_downwards_trend_sma_short_death_cross_weight': 38,
+        'sell_downwards_trend_vwap_cross_weight': 69,
+        'sell_rsi_divergence_weight': 0,
+        'sell_sideways_trend_adx_strong_down_weight': 89,
+        'sell_sideways_trend_bollinger_bands_weight': 25,
+        'sell_sideways_trend_ema_long_death_cross_weight': 28,
+        'sell_sideways_trend_ema_short_death_cross_weight': 65,
+        'sell_sideways_trend_macd_weight': 19,
+        'sell_sideways_trend_rsi_weight': 89,
+        'sell_sideways_trend_sma_long_death_cross_weight': 57,
+        'sell_sideways_trend_sma_short_death_cross_weight': 10,
+        'sell_sideways_trend_vwap_cross_weight': 16,
+        'sell_upwards_trend_adx_strong_down_weight': 19,
+        'sell_upwards_trend_bollinger_bands_weight': 21,
+        'sell_upwards_trend_ema_long_death_cross_weight': 11,
+        'sell_upwards_trend_ema_short_death_cross_weight': 34,
+        'sell_upwards_trend_macd_weight': 0,
+        'sell_upwards_trend_rsi_weight': 59,
+        'sell_upwards_trend_sma_long_death_cross_weight': 87,
+        'sell_upwards_trend_sma_short_death_cross_weight': 28,
+        'sell_upwards_trend_vwap_cross_weight': 17,
+        'sell_wavetrend_weight': 30
     }
 
     # ROI table:
     minimal_roi = {
-        "0": 0.64208,
-        "371": 0.18428,
-        "791": 0.08118,
-        "1818": 0
+        "0": 0.3617,
+        "464": 0.18,
+        "1144": 0.07936,
+        "2245": 0
     }
 
     # Stoploss:
-    stoploss = -0.05811
+    stoploss = -0.25433
 
     # Trailing stop:
     trailing_stop = True
-    trailing_stop_positive = 0.01062
-    trailing_stop_positive_offset = 0.03918
+    trailing_stop_positive = 0.01268
+    trailing_stop_positive_offset = 0.01502
     trailing_only_offset_is_reached = False
 
-
-   
 
     ####################################################################################################################
     #                                     END OF HYPEROPT RESULTS COPY-PASTE SECTION                                   #
